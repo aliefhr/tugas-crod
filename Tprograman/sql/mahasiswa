@@ -1,0 +1,12 @@
+CREATE DATABASE mahasiswa_db;
+
+USE mahasiswa_db;
+
+CREATE TABLE mahasiswa (
+    npm VARCHAR(20) PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    nomor_hp VARCHAR(15) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    jurusan VARCHAR(50) NOT NULL,
+    jenjang VARCHAR(20) NOT NULL
+);
