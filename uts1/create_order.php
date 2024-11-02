@@ -1,3 +1,10 @@
+<?php
+include 'config.php';
+
+// Mengambil data film dari tabel jadwal_film
+$result = $conn->query("SELECT * FROM jadwal_film");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,12 +19,19 @@
         <h1 class="text-center">Tambah Order Tiket</h1>
         <form action="store_order.php" method="POST">
             <div class="form-group">
-                <label for="nama_pembeli">kode Bangku:</label>
+                <label for="nama_pembeli">Kode Bangku:</label>
                 <input type="text" class="form-control" id="nama_pembeli" name="nama_pembeli" required>
             </div>
             <div class="form-group">
                 <label for="film">Film:</label>
-                <input type="text" class="form-control" id="film" name="film" required>
+                <select class="form-control" id="film" name="film" required>
+                    <option value="">Pilih Film</option>
+                    <?php while ($row = $result->fetch_assoc()): ?>
+                        <option value="<?php echo htmlspecialchars($row['film']); ?>">
+                            <?php echo htmlspecialchars($row['film']); ?>
+                        </option>
+                    <?php endwhile; ?>
+                </select>
             </div>
             <div class="form-group">
                 <label for="jumlah_tiket">Jumlah Tiket:</label>
